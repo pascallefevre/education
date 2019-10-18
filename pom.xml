@@ -16,10 +16,9 @@
 	<!--  add this dependencies for exportation -->
 	<packaging>jar</packaging>
 	
-	
-	
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>com.sb.DemoApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -43,15 +42,12 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-		<!-- also needed for export  -->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
+		<build>
+		  <plugins>
+		    <plugin>
+		      <groupId>org.springframework.boot</groupId>
+		      <artifactId>spring-boot-maven-plugin</artifactId>
+		    </plugin>
+		  </plugins>
+		</build>
 </project>
