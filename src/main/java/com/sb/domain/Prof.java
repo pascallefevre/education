@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -36,45 +37,45 @@ public class Prof {
 	
 	@JsonView(View.Common.class)
 	@Temporal(TemporalType.DATE)
-	private Date birthday;
+	private Date birthdate;
 	
-	@JsonView(View.Common.class)
-	@OneToOne
+	@JsonIgnore
+	@OneToOne(mappedBy= "pp",  fetch = FetchType.LAZY)
 	private Classe refclasse;
 	
 	
-	@JsonView(View.Common.class)
+	@JsonIgnore
 	@Column(name="PROF_CRENOX")
 	@OneToMany(mappedBy="prof", fetch=FetchType.EAGER)
 	private Set<Creneau> creneauxProf = new HashSet<Creneau>();
 
 
-	public Prof(int id, String firstname, String lastname, Date birthday, Classe refclasse, Set<Creneau> creneauxProf) {
+	public Prof(int id, String firstname, String lastname, Date birthdate, Classe refclasse, Set<Creneau> creneauxProf) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.birthday = birthday;
+		this.birthdate = birthdate;
 		this.refclasse = refclasse;
 		this.creneauxProf = creneauxProf;
 	}
 
 
-	public Prof(String firstname, String lastname, Date birthday, Classe refclasse, Set<Creneau> creneauxProf) {
+	public Prof(String firstname, String lastname, Date birthdate, Classe refclasse, Set<Creneau> creneauxProf) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.birthday = birthday;
+		this.birthdate = birthdate;
 		this.refclasse = refclasse;
 		this.creneauxProf = creneauxProf;
 	}
 
 
-	public Prof(String firstname, String lastname, Date birthday) {
+	public Prof(String firstname, String lastname, Date birthdate) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.birthday = birthday;
+		this.birthdate = birthdate;
 	}
 
 
@@ -98,8 +99,8 @@ public class Prof {
 	}
 
 
-	public Date getBirthday() {
-		return birthday;
+	public Date getBirthdate() {
+		return birthdate;
 	}
 
 
@@ -128,8 +129,8 @@ public class Prof {
 	}
 
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
 	}
 
 
@@ -145,7 +146,7 @@ public class Prof {
 
 	@Override
 	public String toString() {
-		return "Prof [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", birthday=" + birthday
+		return "Prof [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate=" + birthdate
 				+ ", refclasse=" + refclasse + ", creneauxProf=" + creneauxProf + "]";
 	}
 	

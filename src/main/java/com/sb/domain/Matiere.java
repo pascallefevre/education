@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -30,7 +31,7 @@ public class Matiere {
 	@JsonView(View.Common.class)
 	private String color;
 	
-	@JsonView(View.Common.class)
+	@JsonIgnore
 	@Column(name="MATIERE_CRENOX")
 	@OneToMany(mappedBy="matiere", fetch=FetchType.EAGER)
 	private Set<Creneau> creneauxMatiere = new HashSet<Creneau>();

@@ -1,5 +1,11 @@
 package com.sb.domain;
 
+
+
+
+
+
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,12 +32,10 @@ public class Creneau {
 	private int id;
 	
 	@JsonView(View.Common.class)
-	@Temporal(TemporalType.DATE)
-	private Date startdate;
+	private String startdate;
 	
 	@JsonView(View.Common.class)
-	@Temporal(TemporalType.DATE)
-	private Date enddate;
+	private String enddate;
 	
 	//Chaque créneau pocède:
 	@JsonView(View.Common.class)
@@ -50,7 +54,7 @@ public class Creneau {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Room room;
 
-	public Creneau(int id, Date startdate, Date enddate, Classe classe, Prof prof, Matiere matiere, Room room) {
+	public Creneau(int id, String startdate, String enddate, Classe classe, Prof prof, Matiere matiere, Room room) {
 		super();
 		this.id = id;
 		this.startdate = startdate;
@@ -61,7 +65,7 @@ public class Creneau {
 		this.room = room;
 	}
 
-	public Creneau(Date startdate, Date enddate, Classe classe, Prof prof, Matiere matiere, Room room) {
+	public Creneau(String startdate, String enddate, Classe classe, Prof prof, Matiere matiere, Room room) {
 		super();
 		this.startdate = startdate;
 		this.enddate = enddate;
@@ -71,7 +75,7 @@ public class Creneau {
 		this.room = room;
 	}
 
-	public Creneau(Date startdate, Date enddate) {
+	public Creneau(String startdate, String enddate) {
 		super();
 		this.startdate = startdate;
 		this.enddate = enddate;
@@ -85,11 +89,11 @@ public class Creneau {
 		return id;
 	}
 
-	public Date getStartdate() {
+	public String getStartdate() {
 		return startdate;
 	}
 
-	public Date getEnddate() {
+	public String getEnddate() {
 		return enddate;
 	}
 
@@ -113,11 +117,11 @@ public class Creneau {
 		this.id = id;
 	}
 
-	public void setStartdate(Date startdate) {
+	public void setStartdate(String startdate) {
 		this.startdate = startdate;
 	}
 
-	public void setEnddate(Date enddate) {
+	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
 

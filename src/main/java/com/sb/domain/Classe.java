@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -33,10 +34,10 @@ public class Classe {
 	private int size;
 	
 	@JsonView(View.Common.class)
-	@OneToOne (mappedBy= "refclasse",  fetch = FetchType.LAZY)
+	@OneToOne 
 	private Prof pp;
 	
-	@JsonView(View.Common.class)
+	@JsonIgnore
 	@Column(name="CLASSE_CRENOX")
 	@OneToMany(mappedBy="classe", fetch=FetchType.EAGER)
 	private Set<Creneau> creneauxClasse = new HashSet<Creneau>();
